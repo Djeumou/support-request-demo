@@ -494,7 +494,7 @@ to {
 
 @media only screen and (max-width: 375px){
   .wrapper-content-info-page{
-    width: 78.7% !important;
+    width: 100% !important;
   }
   .wrap-top-header img {
     object-fit: cover;
