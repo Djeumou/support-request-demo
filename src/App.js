@@ -6,14 +6,21 @@ import {faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import data from './data';
 import AnimalCard from './AnimalCard/AnimalCard';
-import { Accordion, AccordionItem } from '@szhsin/react-accordion';
+//import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 import ReactVideoPlayer from './ReactVideoPlayer';
 //import  ReactPlayer from 'react-player';
-import Carousel from 'react-elastic-carousel';
+//import Carousel from 'react-elastic-carousel';
 //import { useHistory } from "react-router-dom";
 //import styled from 'styled-components';
 //import React, {Component} from 'react';
-//import { useState  } from "react";
+//import { useState  } from 'react';
+//import { CCarousel, CCarouselItem} from '@coreui/react';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.css';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+//import '@coreui/coreui/scss/coreui.scss';
 
 export default function App () {
 
@@ -21,6 +28,7 @@ export default function App () {
   //   const width = window.innerWidth
   //   setWindowWidth(width)
   // }
+  
 
   function showAdditional(additional) {
     const alertInformation = Object.entries(additional)
@@ -90,12 +98,12 @@ export default function App () {
   //   setFruits(newFruits);
   //   valueEnter(" ");
   // }
-  const breakPoints =[
-    {width: 1, itemsToShow: 1},
-    {width: 550, itemsToShow: 1},
-    {width: 768, itemsToShow: 2},
-    {width: 1200, itemsToShow: 3}
-  ];
+  // const breakPoints =[
+  //   {width: 1, itemsToShow: 1},
+  //   {width: 550, itemsToShow: 1},
+  //   {width: 768, itemsToShow: 2},
+  //   {width: 1200, itemsToShow: 3}
+  // ];
 
   //   var link=URL:{ new (url: "https://iutdla.atlassian.net/servicedesk/customer/portals?customize=true") },
   return (
@@ -146,23 +154,51 @@ export default function App () {
                   <div className="container-info-page">
                     <div className="wrap-accordion">
 
-                      <Accordion allowMultiple>
-                        <AccordionItem header="Quelles types de requête peut-on soumettre à travers la plateforme ?">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </AccordionItem>
-
-                        <AccordionItem header="Comment soumettre une requête à travers la plateforme ?">
-                          Quisque eget luctus mi, vehicula mollis lorem. Proin fringilla
-                          vel erat quis sodales. Nam ex enim, eleifend venenatis lectus
-                          vitae, accumsan auctor mi.
-                        </AccordionItem>
-
-                        <AccordionItem header="Quelles types de fichiers joints fournir pour chaque type de requête ?">
-                          Suspendisse massa risus, pretium id interdum in, dictum sit amet
-                          ante. Fusce vulputate purus sed tempus feugiat.
-                        </AccordionItem>
-                      </Accordion>
+                          {/* <Accordion defaultActiveKey="0">
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} 
+                                    variant="link" eventKey="0">
+                                    Quelles types de requête peut-on soumettre à travers la plateforme ?
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="0">
+                                    <Card.Body>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} 
+                                    variant="link" eventKey="1">
+                                    Comment soumettre une requête à travers la plateforme ?
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="1">
+                                    <Card.Body>
+                                    Quisque eget luctus mi, vehicula mollis lorem. Proin fringilla
+                                    vel erat quis sodales. Nam ex enim, eleifend venenatis lectus
+                                    vitae, accumsan auctor mi.
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} 
+                                    variant="link" eventKey="2">
+                                    Quelles types de fichiers joints fournir pour chaque type de requête ?
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="2">
+                                    <Card.Body>
+                                    Suspendisse massa risus, pretium id interdum in, dictum sit amet
+                                    ante. Fusce vulputate purus sed tempus feugiat.
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion> */}
 
                       </div>
                     </div>
@@ -172,31 +208,37 @@ export default function App () {
                     <div className="container-info-page">
                       <div className="wrap-items-illustrations">
                         <h1> Decouvrez vos Responsables Académiques </h1>
-                        <Carousel breakPoints= { breakPoints }>
+                        {/* <Carousel controls indicators> */}
                           {/* <div className="content-illustrations"> */}
                             {/* <img src={bannerBg} alt="image-illustration" /> */}
-                            {data.map(animal => (
-                                <div className="illustration-bloc">
-                                  <div className="image-illustration">
-                                    <img src= {animal.image} alt="blog" />
-                                  </div>
-                                  <div className="item-content-bloc">
-                                    <AnimalCard
-                                    additional={animal.additional}
-                                    diet={animal.diet}
-                                    key={animal.name}
-                                    name={animal.name}
-                                    scientificName={animal.scientificName}
-                                    showAdditional={showAdditional}
-                                    size={animal.size}
-                                    />
-                                  </div>
-                                </div>
-                            )
-                            )
-                          }
+                            <div className="bloc-carousel">
+                              <div className="bloc-slider-illustration owl-carousel">
+                                {data.map(animal => (
+                                    // <Carousel.Item>
+                                      <div className="illustration-bloc">
+                                        <div className="image-illustration">
+                                          <img src= {animal.image} alt="blog" />
+                                        </div>
+                                        <div className="item-content-bloc">
+                                          <AnimalCard
+                                          additional={animal.additional}
+                                          diet={animal.diet}
+                                          key={animal.name}
+                                          name={animal.name}
+                                          scientificName={animal.scientificName}
+                                          showAdditional={showAdditional}
+                                          size={animal.size}
+                                          />
+                                        </div>
+                                      </div>
+                                    // </Carousel.Item>
+                                )
+                                )
+                                  }
+                              </div>
+                            </div>
                           {/* </div> */}
-                        </Carousel>
+                        {/* </Carousel> */}
                     </div>
                   </div>
 
